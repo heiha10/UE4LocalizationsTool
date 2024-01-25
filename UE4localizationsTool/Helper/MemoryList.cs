@@ -53,7 +53,7 @@ namespace Helper.MemoryList
                 if (this.MemoryListIndex - 1 > MemoryListData.Count - 1)
                 {
 
-                    throw new IndexOutOfRangeException("out of range");
+                    throw new IndexOutOfRangeException("超出范围");
                 }
 
 
@@ -63,11 +63,11 @@ namespace Helper.MemoryList
             {
                 if (MemoryListSize < value)
                 {
-                    throw new IndexOutOfRangeException($"This value \'{value}\' is out of range");
+                    throw new IndexOutOfRangeException($"此值 \'{value}\'超出范围");
                 }
                 if (value < 0 && MemoryListSize != 0)
                 {
-                    throw new IndexOutOfRangeException($"This value \'{value}\' is non number and out of range");
+                    throw new IndexOutOfRangeException($"T此值 \'{value}\'非数字且超出范围");
                 }
                 if (value < 0 && MemoryListSize == 0)
                 {
@@ -92,7 +92,7 @@ namespace Helper.MemoryList
         {
             if (new FileInfo(FilePath).Length > int.MaxValue)
             {
-                throw new Exception("Can't read this file: " + FilePath);
+                throw new Exception("无法读取此文件： " + FilePath);
             }
             MemoryListData = File.ReadAllBytes(FilePath).ToList();
 

@@ -22,33 +22,10 @@ namespace UE4localizationsTool
             ColumnPanel.Visible = false;
         }
 
-        public FrmFilter(NDataGridView dataGridView)
-        {
-            InitializeComponent();
-            Location = new Point(
-                dataGridView.PointToScreen(Point.Empty).X + (dataGridView.Width - this.Width) / 2,
-                dataGridView.PointToScreen(Point.Empty).Y + (dataGridView.Height - this.Height) / 2
-            );
-            ColumnPanel.Visible = true;
-
-            foreach (DataGridViewColumn HeaderText in dataGridView.Columns)
-            {
-                if (HeaderText.Visible)
-                {
-                    Columns.Items.Add(HeaderText.Name);
-                }
-            }
-
-            Columns.SelectedIndex = 0;
-        }
-
-
-
         private void button1_Click(object sender, EventArgs e)
         {
             ArrayValues = new List<string>();
-
-            ArrayValues.Add(matchcase.Checked + "|" + regularexpression.Checked + "|" + reversemode.Checked+"|"+Columns.Text);
+            ArrayValues.Add(matchcase.Checked + "|" + regularexpression.Checked + "|" + reversemode.Checked);
             foreach (string val in listBox1.Items)
             {
                 ArrayValues.Add(val);
@@ -59,22 +36,21 @@ namespace UE4localizationsTool
             UseMatching = matchcase.Checked;
             RegularExpression = regularexpression.Checked;
             ReverseMode = reversemode.Checked;
-            ColumnName = Columns.Text;
             this.Close();
         }
 
         private void ClearList_Click(object sender, EventArgs e)
         {
-            listBox1.Items.Clear();
+            列表框1.Items.Clear();
         }
 
         private void RemoveSelected_Click(object sender, EventArgs e)
         {
-            if (listBox1.SelectedIndex != -1)
-                listBox1.Items.RemoveAt(listBox1.SelectedIndex);
+            if (列表框1.SelectedIndex != -1)
+                列表框1.Items.RemoveAt(列表框1.SelectedIndex);
             else
             {
-                MessageBox.Show("Select value from list", "no selected value", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("从列表中选择值", "未选择值", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
 
@@ -83,15 +59,15 @@ namespace UE4localizationsTool
 
             if (string.IsNullOrEmpty(textBox1.Text))
             {
-                MessageBox.Show("Can't input null value", "Null value", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("不能输入空值", "空值", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             }
 
-            if (!listBox1.Items.Contains(textBox1.Text))
-                listBox1.Items.Add(textBox1.Text);
+            if (!列表框1.Items.Contains(textBox1.Text))
+                列表框1.Items.Add(textBox1.Text);
             else
             {
-                MessageBox.Show($"The Value '{textBox1.Text}' is already in list", "Existed value", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show($"值 '{textBox1.Text}'已在列表中", "值已存在", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
 
         }
@@ -100,7 +76,7 @@ namespace UE4localizationsTool
         {
             if (File.Exists("FilterValues.txt"))
             {
-                listBox1.Items.Clear();
+                列表框1.Items.Clear();
                 List<string> FV = new List<string>();
                 FV.AddRange(File.ReadAllLines("FilterValues.txt"));
                 string[] Controls = FV[0].Split(new char[] { '|' });
@@ -109,15 +85,11 @@ namespace UE4localizationsTool
                 {
                     if(Controls.Length > 0)
                     matchcase.Checked = Convert.ToBoolean(Controls[0]);
-                    if (Controls.Length > 1)
-                        regularexpression.Checked = Convert.ToBoolean(Controls[1]);
-                    if (Controls.Length > 2)
-                        reversemode.Checked = Convert.ToBoolean(Controls[2]);
-                    if (Controls.Length > 3)
-                        Columns.Text = Controls[3];
+                    regularexpression.Checked = Convert.ToBoolean(Controls[1]);
+                    reversemode.Checked = Convert.ToBoolean(Controls[2]);
                     FV.RemoveAt(0);
                 }
-                listBox1.Items.AddRange(FV.ToArray());
+                列表框1.Items.AddRange(FV.ToArray());
             }
         }
 

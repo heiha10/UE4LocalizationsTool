@@ -36,8 +36,8 @@ namespace UE4localizationsTool
         private void OpenFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "All localizations files|*.uasset;*.locres;*.umap|Uasset File|*.uasset|Locres File|*.locres|Umap File|*.umap";
-            ofd.Title = "Open localizations File";
+            ofd.Filter = "所有本地化文件|*.uasset;*.locres;*.umap|Uasset 文件|*.uasset|Locres 文件|*.locres|Umap 文件|*.umap";
+            ofd.Title = "打开本地化文件";
 
 
             if (ofd.ShowDialog() == DialogResult.OK)
@@ -55,7 +55,7 @@ namespace UE4localizationsTool
 
             //try
             //{
-            StatusMessage("loading File...", "loading File, please wait.");
+            StatusMessage("正在载入文件...", "正在载入文件，请稍等。");
 
             if (filePath.ToLower().EndsWith(".locres"))
             {
@@ -71,7 +71,7 @@ namespace UE4localizationsTool
                 CreateBackupList();
                 if (!Asset.IsGood)
                 {
-                    StateLabel.Text = "Warning: This file is't fully parsed and may not contain some text.";
+                    StateLabel.Text = "警告：此文件未完全解析，可能不包含某些文本。";
                 }
             }
 
@@ -83,7 +83,7 @@ namespace UE4localizationsTool
             //catch (Exception ex)
             //{
             //    CloseFromState();
-            //    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //}
 
         }
@@ -128,8 +128,8 @@ namespace UE4localizationsTool
             if (this.SortApply && !(Asset is LocresFile)) SortDataGrid(2, true);
 
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "Text File|*.txt";
-            sfd.Title = "Export All Text";
+            sfd.Filter = "文本文件|*.txt";
+            sfd.Title = "导出所有文本";
             sfd.FileName = Path.GetFileName(FilePath) + ".txt";
 
 
@@ -142,7 +142,7 @@ namespace UE4localizationsTool
                     {
                         if (exportType == ExportType.WithNames)
                         {
-                            stream.WriteLine(@"[~NAMES-INCLUDED~]//Don't edit or remove this line.");
+                            stream.WriteLine(@"[~NAMES-INCLUDED~]//不要编辑或删除此行。");
                         }
 
                         for (int i = 0; i < dataGridView1.Rows.Count; i++)
@@ -158,16 +158,16 @@ namespace UE4localizationsTool
                     }
                     if (dataGridView1.IsFilterApplied)
                     {
-                        MessageBox.Show("Successful export!\n Remember to apply the same filter you using right now before 'import'.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("导出成功！\n'import' 导入是记住应用你现在使用的筛选。", "完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Successful export!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("导出成功！", "完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 catch
                 {
-                    MessageBox.Show("Can't write export file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("无法写入导出文件！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }
             }
         }
@@ -176,8 +176,8 @@ namespace UE4localizationsTool
         {
 
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Text File|*.txt;*.csv";
-            ofd.Title = "Import All Text";
+            ofd.Filter = "文本文件|*.txt;*.csv";
+            ofd.Title = "导入所有文本";
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
@@ -194,7 +194,7 @@ namespace UE4localizationsTool
                         MessageBox.Show(ex.Message, ToolName, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
-                    MessageBox.Show("Successful import!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("导入成功！!", "完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
@@ -207,13 +207,13 @@ namespace UE4localizationsTool
                 }
                 catch
                 {
-                    MessageBox.Show("Can't read file or this file is using in Another process", "File is corrupted", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("无法读取文件或此文件正在另一个进程中使用", "文件已损坏", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
                 if (DataGridStrings.Length < dataGridView1.Rows.Count)
                 {
-                    MessageBox.Show("This file does't contain enough strings for reimport", "Out of range", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("此文件包含的字符串不足以重新导入", "超出范围", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
@@ -229,7 +229,7 @@ namespace UE4localizationsTool
                         }
                         catch
                         {
-                            MessageBox.Show($"Corrupted string format in line " + (n + 1), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            MessageBox.Show($"行中的字符串格式已损坏 " + (n + 1), this.Text, MessageBoxButtons.OK, MessageBoxIcon.Stop);
                             return;
                         }
 
@@ -241,7 +241,7 @@ namespace UE4localizationsTool
                 {
                     dataGridView1.SetValue(dataGridView1.Rows[n].Cells["Text value"], DataGridStrings[n]);
                 }
-                MessageBox.Show("Successful import!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("导入成功", "完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
             }
@@ -256,32 +256,32 @@ namespace UE4localizationsTool
             SaveFileDialog sfd = new SaveFileDialog();
             if (FilePath.ToLower().EndsWith(".locres"))
             {
-                sfd.Filter = "locres File|*.locres";
+                sfd.Filter = "locres 文件|*.locres";
             }
             else if (FilePath.ToLower().EndsWith(".uasset"))
             {
-                sfd.Filter = "Uasset File|*.uasset";
+                sfd.Filter = "Uasset 文件|*.uasset";
             }
             else if (FilePath.ToLower().EndsWith(".umap"))
             {
-                sfd.Filter = "Umap File|*.umap";
+                sfd.Filter = "Umap 文件|*.umap";
             }
 
-            sfd.Title = "Save localizations file";
+            sfd.Title = "保存本地化文件";
             sfd.FileName = Path.GetFileNameWithoutExtension(FilePath) + "_NEW";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    StatusMessage("Saving File...", "Saving File ,please wait.");
+                    StatusMessage("正在保存文件...", "正在保存文件，请稍等。");
                     Asset.LoadFromDataGridView(dataGridView1);
                     await Task.Run(() => Asset.SaveFile(sfd.FileName));
-                    MessageBox.Show("Saved Successful.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("保存成功！", "完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
 
-                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 CloseFromState();
@@ -333,14 +333,14 @@ namespace UE4localizationsTool
             dataGridView1.Redo();
         }
 
-        private void commandLinesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show(Program.commandlines, "Command Lines", MessageBoxButtons.OK);
-        }
-
         private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            new FrmAbout(this).ShowDialog();
+            new About(this).ShowDialog();
+        }
+
+        private void commandLinesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new CommandsUI(this).ShowDialog();
         }
 
         private void clearFilterToolStripMenuItem_Click(object sender, EventArgs e)
@@ -350,7 +350,7 @@ namespace UE4localizationsTool
 
         private void UpdateCounter()
         {
-            DataCount.Text = "Text count: " + dataGridView1.Rows.Count;
+            DataCount.Text = "文本计数: " + dataGridView1.Rows.Count;
         }
 
 
@@ -388,7 +388,7 @@ namespace UE4localizationsTool
                                    if (ToolVer > float.Parse(Application.ProductVersion))
                                    {
 
-                                       DialogResult message = MessageBox.Show("There is an update available\nDo you want to download it?", "Update available", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                                       DialogResult message = MessageBox.Show("有可用的更新\n要下载吗？", "有可用更新", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
                                        if (message == DialogResult.Yes)
                                        {
@@ -414,7 +414,7 @@ namespace UE4localizationsTool
 
             if (!UE4localizationsTool.Properties.Settings.Default.GoodByeMessage)
             {
-                MessageBox.Show("Hello, I hope my tool has been helpful to you. This will be the final version. I apologize for any inconvenience.", "Good bye!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("你好，我希望我的工具对你有所帮助。这将是最终版本。对于给你带来的不便，我深表歉意。", "再见！", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 UE4localizationsTool.Properties.Settings.Default.GoodByeMessage = true;
                 UE4localizationsTool.Properties.Settings.Default.Save();
             }
@@ -529,8 +529,8 @@ namespace UE4localizationsTool
         private void csvFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog sfd = new SaveFileDialog();
-            sfd.Filter = "CSV File|*.csv";
-            sfd.Title = "Export All Text";
+            sfd.Filter = "CSV F文件|*.csv";
+            sfd.Title = "导出所有文本";
             sfd.FileName = Path.GetFileName(FilePath) + ".csv";
 
 
@@ -542,16 +542,16 @@ namespace UE4localizationsTool
 
                     if (dataGridView1.IsFilterApplied)
                     {
-                        MessageBox.Show("Successful export!\n Remember to apply the same filter you using right now before 'import'.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("导出成功！\n 记住 'import'导入之前应用与导出相同的筛选。", "完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Successful export!", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("导出成功！", "完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 catch
                 {
-                    MessageBox.Show("Can't write export file!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("无法写入导出文本！", "错误", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }
             }
         }
@@ -583,12 +583,12 @@ namespace UE4localizationsTool
         {
             if (dataGridView1.SelectedCells.Count == 0)
             {
-                MessageBox.Show("No row(s) selected to remove.", "Remove Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("未选择要移除的行。", "移除失败！", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
 
-            DialogResult result = MessageBox.Show("Are you sure you want to remove the selected row(s)?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show("确定要移除选择的行吗？", "确定", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (result == DialogResult.Yes)
             {
@@ -610,7 +610,7 @@ namespace UE4localizationsTool
             if (dataGridView1.SelectedCells.Count > 1 || dataGridView1.SelectedCells.Count == 0)
             {
 
-                MessageBox.Show("Please select a single cell to edit.", "Edit Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("请选择一个单元格进行编辑。", "编辑失败", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
 
             }
@@ -621,11 +621,11 @@ namespace UE4localizationsTool
                 try
                 {
                     EntryEditor.EditRow(dataGridView1);
-                    MessageBox.Show("The row edited successfully.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("此行编辑成功。", "完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("An error occurred while editing the row:\n " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("编辑此行时发生错误：\n " + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
@@ -641,11 +641,11 @@ namespace UE4localizationsTool
                     dataGridView1.BeginEdit(false);
                     EntryEditor.AddRow(dataGridView1);
                     dataGridView1.EndEdit();
-                    MessageBox.Show("New row added successfully.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("成功呢添加新航。", "完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("An error occurred while adding the row:\n " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("添加新行时发生错误：\n " + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
             }
@@ -654,13 +654,13 @@ namespace UE4localizationsTool
         private void mergeLocresFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "Locres File(s)|*.locres";
-            ofd.Title = "Select localization file(s)";
+            ofd.Filter = "Locres 文件|*.locres";
+            ofd.Title = "选择本地化文件";
             ofd.Multiselect = true;
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                StatusMessage("Merging locres files...", "Merging locres files, please wait.");
+                StatusMessage("合并 locres 文件...", "正在合并 locres 文件, 请稍等。");
                 var dataTable = new System.Data.DataTable();
 
                 if (dataGridView1.DataSource is System.Data.DataTable sourceDataTable)
@@ -690,11 +690,11 @@ namespace UE4localizationsTool
                     ((System.Data.DataTable)dataGridView1.DataSource).Merge(dataTable);
 
 
-                    MessageBox.Show("Locres file(s) merged successfully.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Locres合并成功。", "完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("An error occurred while merging locres file(s):\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("合并 locres 时发生错误：\n" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 CloseFromState();
             }
@@ -714,13 +714,13 @@ namespace UE4localizationsTool
         private void mergeUassetFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "All localizations files|*.uasset;*.umap|Uasset File|*.uasset|Umap File|*.umap";
-            ofd.Title = "Open localizations File";
+            ofd.Filter = "所有本地化文件|*.uasset;*.umap|Uasset File|*.uasset|Umap File|*.umap";
+            ofd.Title = "打开本地化文件";
             ofd.Multiselect = true;
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-                StatusMessage("Merging uasset files...", "Merging uasset files, please wait.");
+                StatusMessage("正在合并 uasset 文件...", "正在合并 uasset 文件，请稍等。");
 
                 var dataTable = new System.Data.DataTable();
 
@@ -749,11 +749,11 @@ namespace UE4localizationsTool
                       ((System.Data.DataTable)dataGridView1.DataSource).Merge(dataTable);
 
 
-                    MessageBox.Show("Uasset file(s) merged successfully.", "Done", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Uasset 文件合并成功。", "完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("An error occurred while merging uasset file(s):\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("合并 uasset 文件时发生错误：\n" + ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 CloseFromState();
 
@@ -763,6 +763,11 @@ namespace UE4localizationsTool
         private void replaceToolStripMenuItem_Click(object sender, EventArgs e)
         {
             searchBox.ShowReplacePanel();
+        }
+
+        private void searchBox_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

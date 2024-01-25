@@ -69,7 +69,7 @@ namespace AssetParser
             {
                 if (!File.Exists(Path.ChangeExtension(FilePath, ".uexp")))
                 {
-                    throw new Exception("Uexp file is not exists!");
+                    throw new Exception("Uexp 文件不存在！");
                 }
                 UexpFile = new MemoryList(Path.ChangeExtension(FilePath, ".uexp"));
                 IsNotUseUexp = false;

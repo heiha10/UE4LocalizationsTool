@@ -12,7 +12,7 @@ namespace UE4localizationsTool
 
 
         public static string commandlines =
-         $"{AppDomain.CurrentDomain.FriendlyName}  export     <(Locres/Uasset/Umap) FilePath>  <Options>\n" +
+         $"{AppDomain.CurrentDomain.FriendlyName}  export     <(Locres/Uasset) FilePath>  <Options>\n" +
          $"{AppDomain.CurrentDomain.FriendlyName}  import     <(txt) FilePath>  <Options>\n" +
          $"{AppDomain.CurrentDomain.FriendlyName} -import     <(txt) FilePath>  <Options>\n" +
          $"{AppDomain.CurrentDomain.FriendlyName}  exportall  <Folder> <TxtFile> <Options>\n" +
@@ -22,22 +22,19 @@ namespace UE4localizationsTool
 
           "Options:\n" +
           "To use last filter you applied before in GUI, add (-f \\ -filter) after command line\n" +
-          "filter will apply only in name table " +
-            "\n(Remember to apply the same filter when importing)\n\n" +
+          "filter will apply only in name table (Remember to apply the same filter when importing)\n\n" +
 
-          "To export file without including the names use (-nn \\ -NoName)" +
-          "\n(Remember to use this command when importing)\n\n" +
-
-          "To use method 2 (-m2 \\ -method2)" +
-          "\n(Remember to use this command when importing)\n\n" +
+          "导出不包含名称的文件，请使用 (-nn \\ -NoName)" +
+          "\n(导入时请记住使用此命令)\n\n" +
 
           "Examples:\n" +
          $"{AppDomain.CurrentDomain.FriendlyName} export Actions.uasset\n" +
          $"{AppDomain.CurrentDomain.FriendlyName} import Actions.uasset.txt\n" +
          $"{AppDomain.CurrentDomain.FriendlyName} exportall Actions text.txt\n" +
-         $"{AppDomain.CurrentDomain.FriendlyName} importall Actions text.txt\n";
+         $"{AppDomain.CurrentDomain.FriendlyName} importall Actions text.txt\n" +
+         $"{AppDomain.CurrentDomain.FriendlyName} export Actions.uasset -c （导出CSV格式，最好用于loces导出设置）\n";
 
-        public static Args GetArgs(int Index, string[] args)
+        public static (bool UseFilter, bool NoName) GetArgs(int Index, string[] args)
         {
             Args args1 = new Args();
 
@@ -51,7 +48,7 @@ namespace UE4localizationsTool
                         break;
                     case "-nn":
                     case "-noname":
-                        args1 |= Args.noname;
+                        noname = true;
                         break;
                     case "-m2":
                     case "-method2":
@@ -64,7 +61,7 @@ namespace UE4localizationsTool
                         break;
                     default:
                         Console.ForegroundColor = ConsoleColor.Yellow;
-                        Console.WriteLine("Invalid command: " + args[n]);
+                        Console.WriteLine("无效命令： " + args[n]);
                         Console.ForegroundColor = ConsoleColor.White;
                         break;
                 }
@@ -83,10 +80,6 @@ namespace UE4localizationsTool
                     case "-filter":
                     case "-nn":
                     case "-noname":
-                    case "-method2":
-                    case "-m2":
-                    case "-c":
-                    case "-csv":
                         throw new Exception("Invalid number of arguments.\n\n" + commandlines);
                 }
             }
@@ -120,7 +113,7 @@ namespace UE4localizationsTool
                 if (args.Length < 2)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Invalid number of arguments.\n\n" + commandlines);
+                    Console.WriteLine("无效参数。\n\n" + commandlines);
                     Console.ForegroundColor = ConsoleColor.White;
                     return;
                 }
@@ -131,7 +124,7 @@ namespace UE4localizationsTool
                     {
                         if (args.Length < 3)
                         {
-                            throw new Exception("Invalid number of arguments.\n\n" + commandlines);
+                            throw new Exception("无效参数。\n\n" + commandlines);
                         }
 
                         CheckArges(3, args);

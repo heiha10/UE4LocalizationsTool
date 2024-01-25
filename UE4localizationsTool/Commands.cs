@@ -52,7 +52,7 @@ namespace UE4localizationsTool
                     Strings = new List<List<string>>();
                     Console.ForegroundColor = ConsoleColor.Blue;
                     ConsoleText = $"Exporting... '{Path.GetFileName(SourcePath)}' ";
-                    Console.Write(ConsoleText);
+                    Console.WriteLine(ConsoleText);
                     Console.ForegroundColor = ConsoleColor.White;
 
                     Strings = Export(SourcePath);
@@ -63,7 +63,8 @@ namespace UE4localizationsTool
                     }
 
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Write("Done\n");
+                    Console.SetCursorPosition(ConsoleText.Length, Console.CursorTop - 1);
+                    Console.WriteLine("Done");
                     Console.ForegroundColor = ConsoleColor.White;
 
                     SaveTextFile(SourcePath + TextFileExtension);
@@ -81,12 +82,12 @@ namespace UE4localizationsTool
                 case "-import"://Single File Without rename
                     Console.ForegroundColor = ConsoleColor.Blue;
                     ConsoleText = $"Importing... '{Path.GetFileName(SourcePath)}' ";
-                    Console.Write(ConsoleText);
+                    Console.WriteLine(ConsoleText);
                     Console.ForegroundColor = ConsoleColor.White;
 
                     if (!SourcePath.EndsWith(TextFileExtension, StringComparison.OrdinalIgnoreCase))
                     {
-                        throw new Exception("Invalid text file type: " + Path.GetFileName(SourcePath));
+                        throw new Exception("无效的文本类型： " + Path.GetFileName(SourcePath));
                     }
 
 
@@ -100,9 +101,10 @@ namespace UE4localizationsTool
                         rows = File.ReadAllLines(SourcePath);
                     }
 
-                    Import(Path.ChangeExtension(SourcePath, null), rows, Options.ToLower());
+                    Import(Path.ChangeExtension(SourcePath, null), File.ReadAllLines(SourcePath), Options.ToLower());
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Write("Done\n");
+                    Console.SetCursorPosition(ConsoleText.Length, Console.CursorTop - 1);
+                    Console.WriteLine("Done");
                     Console.ForegroundColor = ConsoleColor.White;
 
 
@@ -112,27 +114,15 @@ namespace UE4localizationsTool
                 case "-importall"://Folders Without rename Files
                     Paths = SourcePath.Split(new char[] { '*' }, 2);
 
-                    if (!Paths[1].EndsWith(TextFileExtension, StringComparison.OrdinalIgnoreCase))
-                    {
-                        throw new Exception("Invalid text file type: " + Path.GetFileName(SourcePath));
-                    }
-
-
-
-                    if (Flags.HasFlag(Args.CSV))
-                    {
-                        rows = CSVFile.Instance.Load(Paths[1], Flags.HasFlag(Args.noname));
-                    }
-                    else
+                    if (!Paths[1].EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
                     {
                         rows = File.ReadAllLines(Paths[1]);
                     }
 
-
-                    ImportFolder(Paths[0], rows, Options.ToLower());
+                    ImportFolder(Paths[0], File.ReadAllLines(Paths[1]), Options.ToLower());
                     break;
                 default:
-                    throw new Exception("Invalid number of arguments.\n" + Program.commandlines);
+                    throw new Exception("参数无效。\n" + Program.commandlines);
             }
 
         }
@@ -142,7 +132,7 @@ namespace UE4localizationsTool
         {
             Console.ForegroundColor = ConsoleColor.Blue;
             string ConsoleText = "Saving text file... ";
-            Console.Write(ConsoleText);
+            Console.WriteLine(ConsoleText);
             Console.ForegroundColor = ConsoleColor.White;
 
 
@@ -178,7 +168,8 @@ namespace UE4localizationsTool
             File.WriteAllLines(FilePath, stringsArray);
         End:
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Write("Done\n");
+            Console.SetCursorPosition(ConsoleText.Length, Console.CursorTop - 1);
+            Console.WriteLine("Done");
             Console.ForegroundColor = ConsoleColor.White;
         }
 
@@ -187,7 +178,7 @@ namespace UE4localizationsTool
         {
             if (!File.Exists(FilePath))
             {
-                throw new Exception("File not existed: " + FilePath);
+                throw new Exception("文件不存在： " + FilePath);
             }
 
 
@@ -197,22 +188,16 @@ namespace UE4localizationsTool
                 return locres.ExtractTexts();
                 //  SizeOfRecord = locres.Strings.Count;
             }
-            else if (FilePath.EndsWith(".uasset", StringComparison.OrdinalIgnoreCase) || FilePath.EndsWith(".umap", StringComparison.OrdinalIgnoreCase))
+            else if (FilePath.EndsWith(".uasset", StringComparison.OrdinalIgnoreCase))
             {
-                IUasset Uasset = Uexp.GetUasset(FilePath);
-
-                if (Flags.HasFlag(Args.method2))
-                {
-                    Uasset.UseMethod2 = true;
-                }
-
-                Uexp uexp = new Uexp(Uasset);
-                return uexp.Strings;
-                //  SizeOfRecord = uexp.Strings.Count;
+                Uasset Uasset = new Uasset(FilePath);
+                Uexp Uexp = new Uexp(Uasset);
+                return Uexp.Strings;
+                //  SizeOfRecord = Uexp.Strings.Count;
             }
             else
             {
-                throw new Exception("Invalid language file type: " + Path.GetFileName(FilePath));
+                throw new Exception("无效的语言文件类型： " + Path.GetFileName(FilePath));
             }
         }
 
@@ -221,11 +206,11 @@ namespace UE4localizationsTool
         {
             if (!Directory.Exists(FolderPath))
             {
-                throw new Exception("Directory not existed: " + FolderPath);
+                throw new Exception("目录不存在： " + FolderPath);
             }
             Console.ForegroundColor = ConsoleColor.Blue;
             string ConsoleText = "Scaning for files...";
-            Console.Write(ConsoleText);
+            Console.WriteLine(ConsoleText);
             Console.ForegroundColor = ConsoleColor.White;
 
             string[] LanguageFiles = Directory.GetFiles(FolderPath, "*.*", SearchOption.AllDirectories).Where(x => x.EndsWith(".locres", StringComparison.OrdinalIgnoreCase) || x.EndsWith(".uasset", StringComparison.OrdinalIgnoreCase) || x.EndsWith(".umap", StringComparison.OrdinalIgnoreCase)).ToArray<string>();
@@ -235,14 +220,14 @@ namespace UE4localizationsTool
 
             if (LanguageFiles.Count() == 0)
             {
-                throw new Exception($"This directory '{FolderPath}' not contine any language files.");
+                throw new Exception($"“｛FolderPath｝”不包含任何语言文件。");
             }
 
             for (int i = 0; i < LanguageFiles.Count(); i++)
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
-                ConsoleText = $"[{i + 1}:{LanguageFiles.Count()}] Exporting... '{Path.GetFileName(LanguageFiles[i])}' ";
-                Console.Write(ConsoleText);
+                ConsoleText = $"[{ i + 1}:{LanguageFiles.Count()}] Exporting... '{Path.GetFileName(LanguageFiles[i])}' ";
+                Console.WriteLine(ConsoleText);
                 Console.ForegroundColor = ConsoleColor.White;
 
                 int ThisPosition = Strings.Count - 1;
@@ -262,17 +247,19 @@ namespace UE4localizationsTool
                 catch (Exception EX)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("Fail\n");
+                    Console.SetCursorPosition(ConsoleText.Length, Console.CursorTop - 1);
+                    Console.WriteLine("Fail");
                     Console.ForegroundColor = ConsoleColor.White;
 
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("Can't parse it, the tool will skip this file.\n" + EX.Message);
+                    Console.WriteLine("无法解析，将跳过此文件。\n" + EX.Message);
                     Console.ForegroundColor = ConsoleColor.White;
                     continue;
 
                 }
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write("Done\n");
+                Console.SetCursorPosition(ConsoleText.Length, Console.CursorTop - 1);
+                Console.WriteLine("Done");
                 Console.ForegroundColor = ConsoleColor.White;
             }
         }
@@ -289,7 +276,7 @@ namespace UE4localizationsTool
 
             if (StringValues.Length < Strings.Count)
             {
-                throw new Exception("Text file is too short");
+                throw new Exception("文本文件太短");
             }
             for (int i = 0; i < StringValues.Length; i++)
             {
@@ -306,7 +293,7 @@ namespace UE4localizationsTool
                 }
                 catch
                 {
-                    throw new Exception("Can't parse this line from text file: " + StringValues[i]);
+                    throw new Exception("无法从文本文件解析此行： " + StringValues[i]);
                 }
 
             }
@@ -319,7 +306,7 @@ namespace UE4localizationsTool
 
             if (!File.Exists(FilePath))
             {
-                throw new Exception("File not existed: " + FilePath);
+                throw new Exception("文件不存在： " + FilePath);
             }
 
             if (FilePath.EndsWith(".locres", StringComparison.OrdinalIgnoreCase))
@@ -368,7 +355,7 @@ namespace UE4localizationsTool
             }
             else
             {
-                throw new Exception("Invalid language file type: " + Path.GetFileName(FilePath));
+                throw new Exception("无效的语言文件类型： " + Path.GetFileName(FilePath));
             }
 
         }
@@ -378,7 +365,7 @@ namespace UE4localizationsTool
 
             if (!Directory.Exists(FolderPath))
             {
-                throw new Exception("Directory not existed: " + FolderPath);
+                throw new Exception("目录不存在：" + FolderPath);
             }
 
 
@@ -386,7 +373,7 @@ namespace UE4localizationsTool
 
             if (Indexs.Length == 0)
             {
-                throw new Exception("Source text file is corrupted or not contain text or you modified language files path ([PATH]....[PATH]).");
+                throw new Exception("源文本文件已损坏或不包含文本，或者你修改了语言文件路径([PATH]....[PATH]).");
             }
 
             for (int PathIndex = 0; PathIndex < Indexs.Length; PathIndex++)
@@ -397,14 +384,14 @@ namespace UE4localizationsTool
 
                 if (string.IsNullOrEmpty(FilePath))
                 {
-                    Console.WriteLine("Can't get path from" + Indexs[PathIndex] + "line");
+                    Console.WriteLine("无法从" + Indexs[PathIndex] + "行获取路径");
                     continue;
                 }
                 FilePath = FolderPath + @"\" + FilePath;
                 FilePath = FilePath.Replace(@"\\", @"\");
                 Console.ForegroundColor = ConsoleColor.Blue;
                 string ConsoleText = $"[{PathIndex + 1}:{Indexs.Length}] Importing... '{Path.GetFileName(FilePath)}' ";
-                Console.Write(ConsoleText);
+                Console.WriteLine(ConsoleText);
                 Console.ForegroundColor = ConsoleColor.White;
                 string[] StringArrayValues = new string[ArraySize];
                 Array.Copy(Values, Indexs[PathIndex] + 1, StringArrayValues, 0, ArraySize);
@@ -419,16 +406,18 @@ namespace UE4localizationsTool
                 catch (Exception EX)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.Write("Fail\n");
+                    Console.SetCursorPosition(ConsoleText.Length, Console.CursorTop - 1);
+                    Console.WriteLine("Fail");
                     Console.ForegroundColor = ConsoleColor.White;
 
                     Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("Can't parse it, the tool will skip this file.\n" + EX.Message);
+                    Console.WriteLine("无法解析，将跳过此文件。\n" + EX.Message);
                     Console.ForegroundColor = ConsoleColor.White;
                     continue;
                 }
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write("Done\n");
+                Console.SetCursorPosition(ConsoleText.Length, Console.CursorTop - 1);
+                Console.WriteLine("Done");
                 Console.ForegroundColor = ConsoleColor.White;
             }
 
@@ -441,7 +430,7 @@ namespace UE4localizationsTool
 
             if (!File.Exists("FilterValues.txt"))
             {
-                throw new Exception("Can't find 'FilterValues.txt' file, open the GUI and create new one from (Tool>Filter)");
+                throw new Exception("没有找到 'FilterValues.txt' 文件, 打开UI从 (工具>筛选)创建文件");
             }
 
             try
@@ -457,7 +446,7 @@ namespace UE4localizationsTool
             }
             catch (Exception ex)
             {
-                throw new Exception("Can't parse 'FilterValues.txt', open the GUI and create new one from (Tool>Filter)\n" + ex.Message);
+                throw new Exception("无法解析 'FilterValues.txt', 打开UI从 (工具>筛选)创建一个新文件\n" + ex.Message);
             }
         }
 
@@ -610,7 +599,7 @@ namespace UE4localizationsTool
                         }
                         catch
                         {
-                            throw new Exception("Can't parse this line from text file: " + Array[i]);
+                            throw new Exception("无法从文本文件解析此行： " + Array[i]);
                         }
                     }
                 }
@@ -631,7 +620,7 @@ namespace UE4localizationsTool
                     }
                     catch
                     {
-                        throw new Exception("Can't parse this line from text file: " + Array[i]);
+                        throw new Exception("无法从文本文件解析此行： " + Array[i]);
                     }
                 }
             }
