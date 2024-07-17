@@ -67,6 +67,13 @@ UE4localizationsTool.exe export Actions.uasset -filter
 例:
 UE4localizationsTool.exe export Actions.uasset -NoName
 ```
+#### csv格式 导出:
+```
+-c or -csv
+
+例:
+UE4localizationsTool.exe export Actions.uasset -c
+```
 ####  method 2 使用:(尝试在不使用ue4资产结构的情况下捕获文本（仅适用于uasset和umap）)
 ```
 -m2 or -method2
