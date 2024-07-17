@@ -1,5 +1,5 @@
 # UE4LocalizationsTool 中文版 
-一个简单 UE4 （unreal engine 4） 文本文件的工具。
+一个简单编辑 UE4 （unreal engine 4） 文本文件的工具。
 
 开发者： Amr Shaheen
 链接：https://github.com/amrshaheen61/UE4LocalizationsTool/tree/master
