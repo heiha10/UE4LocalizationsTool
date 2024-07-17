@@ -74,7 +74,7 @@ UE4localizationsTool.exe export Actions.uasset -NoName
 例:
 UE4localizationsTool.exe export Actions.uasset -c
 ```
-####  method 2 使用:(尝试在不使用ue4资产结构的情况下捕获文本（仅适用于uasset和umap）)
+####  method 2 使用:(尝试在不使用ue4资产结构的情况下提取文本（仅适用于uasset和umap）)
 ```
 -m2 or -method2
 
