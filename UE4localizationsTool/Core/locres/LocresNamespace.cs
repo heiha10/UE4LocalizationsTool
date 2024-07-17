@@ -185,7 +185,7 @@ namespace UE4localizationsTool.Core.locres
 
             if (Version > LocresVersion.Optimized_CityHash64_UTF16)
             {
-                throw new Exception("Unsupported locres version");
+                throw new Exception("不支持的 locres 版本");
             }
 
 

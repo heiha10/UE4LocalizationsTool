@@ -22,11 +22,34 @@ namespace UE4localizationsTool
             ColumnPanel.Visible = false;
         }
 
+        public FrmFilter(NDataGridView dataGridView)
+        {
+            InitializeComponent();
+            Location = new Point(
+                dataGridView.PointToScreen(Point.Empty).X + (dataGridView.Width - this.Width) / 2,
+                dataGridView.PointToScreen(Point.Empty).Y + (dataGridView.Height - this.Height) / 2
+            );
+            ColumnPanel.Visible = true;
+
+            foreach (DataGridViewColumn HeaderText in dataGridView.Columns)
+            {
+                if (HeaderText.Visible)
+                {
+                    列.Items.Add(HeaderText.Name);
+                }
+            }
+
+            列.SelectedIndex = 0;
+        }
+
+
+
         private void button1_Click(object sender, EventArgs e)
         {
             ArrayValues = new List<string>();
-            ArrayValues.Add(matchcase.Checked + "|" + regularexpression.Checked + "|" + reversemode.Checked);
-            foreach (string val in listBox1.Items)
+
+            ArrayValues.Add(matchcase.Checked + "|" + regularexpression.Checked + "|" + reversemode.Checked+"|"+列.Text);
+            foreach (string val in 列表框1.Items)
             {
                 ArrayValues.Add(val);
             }
@@ -36,6 +59,7 @@ namespace UE4localizationsTool
             UseMatching = matchcase.Checked;
             RegularExpression = regularexpression.Checked;
             ReverseMode = reversemode.Checked;
+            ColumnName = 列.Text;
             this.Close();
         }
 
@@ -85,8 +109,12 @@ namespace UE4localizationsTool
                 {
                     if(Controls.Length > 0)
                     matchcase.Checked = Convert.ToBoolean(Controls[0]);
-                    regularexpression.Checked = Convert.ToBoolean(Controls[1]);
-                    reversemode.Checked = Convert.ToBoolean(Controls[2]);
+                    if (Controls.Length > 1)
+                        regularexpression.Checked = Convert.ToBoolean(Controls[1]);
+                    if (Controls.Length > 2)
+                        reversemode.Checked = Convert.ToBoolean(Controls[2]);
+                    if (Controls.Length > 3)
+                        列.Text = Controls[3];
                     FV.RemoveAt(0);
                 }
                 列表框1.Items.AddRange(FV.ToArray());

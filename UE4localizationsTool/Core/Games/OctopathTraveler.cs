@@ -14,7 +14,7 @@ namespace AssetParser
             MemoryData = memoryList;
             if (GetString() != "m_DataList")
             {
-                throw new Exception("Not supported data type: !m_DataList");
+                throw new Exception("不支持的数据类型： !m_DataList");
             }
             MemoryData.Skip(1);//0xdc
             int Count = MemoryData.GetUShortValue(true, -1, Endian.Big);

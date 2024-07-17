@@ -82,7 +82,7 @@ namespace UE4localizationsTool.Controls
         {
             if (DataGridView.Rows.Count == 0)
             {
-                MessageBox.Show("No data found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("未找到数据。", "搜索结果", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -95,7 +95,7 @@ namespace UE4localizationsTool.Controls
 
                 if (object.ReferenceEquals(cell, DataGridView.SelectedCells[0]))
                 {
-                    MessageBox.Show("No more matches found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("未找到更多匹配项。", "搜索结果", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
@@ -114,7 +114,7 @@ namespace UE4localizationsTool.Controls
 
             if (DataGridView.Rows.Count == 0)
             {
-                MessageBox.Show("No data found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("未找到数据。", "搜索结果", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -127,7 +127,7 @@ namespace UE4localizationsTool.Controls
 
                 if (object.ReferenceEquals(cell, DataGridView.SelectedCells[0]))
                 {
-                    MessageBox.Show("No more matches found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("未找到更多匹配项。", "搜索结果", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
 
@@ -143,8 +143,8 @@ namespace UE4localizationsTool.Controls
         private void Failedmessage()
         {
             MessageBox.Show(
-                text: $"The searched value '{InputSearch.Text}' not found.",
-                caption: "Search Result",
+                text: $"搜索值 '{InputSearch.Text}' 未找到。",
+                caption: "S搜索结果",
                 buttons: MessageBoxButtons.OK,
                 icon: MessageBoxIcon.Warning
             );
@@ -223,7 +223,7 @@ namespace UE4localizationsTool.Controls
 
             if (DataGridView.Rows.Count == 0)
             {
-                MessageBox.Show("No data found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("未找到数据。", "搜索结果", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -244,7 +244,7 @@ namespace UE4localizationsTool.Controls
                 }
             }
             listView1.Visible = true;
-            label2.Text = $"Total matches: {listView1.Items.Count}";
+            label2.Text = $"匹配总数： {listView1.Items.Count}";
 
         }
 
@@ -301,7 +301,7 @@ namespace UE4localizationsTool.Controls
         {
             if (DataGridView.Rows.Count == 0)
             {
-                MessageBox.Show("No data found.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("未找到数据。", "搜索结果", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -320,7 +320,7 @@ namespace UE4localizationsTool.Controls
             }
 
 
-            MessageBox.Show($"Total matches replaced: {totalMatches}", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show($"替换的匹配项总数： {totalMatches}", "搜索结果", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

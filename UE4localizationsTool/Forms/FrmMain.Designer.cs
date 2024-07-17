@@ -124,8 +124,8 @@ namespace UE4localizationsTool
             this.saveToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
+            this.fileToolStripMenuItem.Text = "文件";
             // 
             // OpenFile
             // 
@@ -178,8 +178,8 @@ namespace UE4localizationsTool
             this.Method2,
             this.UseFixedSize});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(41, 20);
-            this.editToolStripMenuItem.Text = "Tool";
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
+            this.editToolStripMenuItem.Text = "工具";
             // 
             // exportAllTextToolStripMenuItem
             // 
@@ -189,8 +189,8 @@ namespace UE4localizationsTool
             this.csvFileToolStripMenuItem});
             this.exportAllTextToolStripMenuItem.Enabled = false;
             this.exportAllTextToolStripMenuItem.Name = "exportAllTextToolStripMenuItem";
-            this.exportAllTextToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.exportAllTextToolStripMenuItem.Text = "Export all text";
+            this.exportAllTextToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.exportAllTextToolStripMenuItem.Text = "导出所有文本";
             // 
             // noNamesToolStripMenuItem
             // 
@@ -210,66 +210,58 @@ namespace UE4localizationsTool
             this.withNamesToolStripMenuItem.Text = "带名称";
             this.withNamesToolStripMenuItem.Click += new System.EventHandler(this.withNamesToolStripMenuItem_Click);
             // 
+            // csvFileToolStripMenuItem
+            // 
+            this.csvFileToolStripMenuItem.Name = "csvFileToolStripMenuItem";
+            this.csvFileToolStripMenuItem.Size = new System.Drawing.Size(157, 22);
+            this.csvFileToolStripMenuItem.Text = "CSV 文件";
+            this.csvFileToolStripMenuItem.Click += new System.EventHandler(this.csvFileToolStripMenuItem_Click);
+            // 
             // importAllTextToolStripMenuItem
             // 
             this.importAllTextToolStripMenuItem.Enabled = false;
             this.importAllTextToolStripMenuItem.Name = "importAllTextToolStripMenuItem";
             this.importAllTextToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.I)));
-            this.importAllTextToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.importAllTextToolStripMenuItem.Text = "Import all text";
+            this.importAllTextToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.importAllTextToolStripMenuItem.Text = "导入所有文本";
             this.importAllTextToolStripMenuItem.Click += new System.EventHandler(this.importAllTextToolStripMenuItem_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(210, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(225, 6);
             // 
             // find
             // 
             this.find.Name = "find";
             this.find.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F)));
-            this.find.Size = new System.Drawing.Size(213, 22);
-            this.find.Text = "Find";
-            this.find.Click += new System.EventHandler(this.search_Click);
+            this.find.Size = new System.Drawing.Size(228, 22);
+            this.find.Text = "查找";
+            this.find.Click += new System.EventHandler(this.find_Click);
             // 
             // replaceToolStripMenuItem
             // 
             this.replaceToolStripMenuItem.Name = "replaceToolStripMenuItem";
             this.replaceToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
-            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(229, 22);
-            this.replaceToolStripMenuItem.Text = "Replace";
+            this.replaceToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.replaceToolStripMenuItem.Text = "替换";
             this.replaceToolStripMenuItem.Click += new System.EventHandler(this.replaceToolStripMenuItem_Click);
             // 
             // filterToolStripMenuItem
             // 
             this.filterToolStripMenuItem.Enabled = false;
             this.filterToolStripMenuItem.Name = "filterToolStripMenuItem";
-            this.filterToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.filterToolStripMenuItem.Text = "Filter";
-            // 
-            // byNameToolStripMenuItem
-            // 
-            this.byNameToolStripMenuItem.Name = "byNameToolStripMenuItem";
-            this.byNameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.byNameToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.byNameToolStripMenuItem.Text = "By Name";
-            this.byNameToolStripMenuItem.Click += new System.EventHandler(this.byNameToolStripMenuItem_Click);
-            // 
-            // byValueToolStripMenuItem
-            // 
-            this.byValueToolStripMenuItem.Name = "byValueToolStripMenuItem";
-            this.byValueToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
-            this.byValueToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.byValueToolStripMenuItem.Text = "By Value";
-            this.byValueToolStripMenuItem.Click += new System.EventHandler(this.byValueToolStripMenuItem_Click);
+            this.filterToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.filterToolStripMenuItem.Text = "筛选";
+            this.filterToolStripMenuItem.Click += new System.EventHandler(this.filterToolStripMenuItem_Click);
             // 
             // clearFilterToolStripMenuItem
             // 
             this.clearFilterToolStripMenuItem.Enabled = false;
             this.clearFilterToolStripMenuItem.Name = "clearFilterToolStripMenuItem";
-            this.clearFilterToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.clearFilterToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
-            this.clearFilterToolStripMenuItem.Text = "Clear filter";
+            this.clearFilterToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.clearFilterToolStripMenuItem.Text = "清除筛选";
+            this.clearFilterToolStripMenuItem.Visible = false;
             this.clearFilterToolStripMenuItem.Click += new System.EventHandler(this.clearFilterToolStripMenuItem_Click);
             // 
             // sortToolStripMenuItem
@@ -278,8 +270,8 @@ namespace UE4localizationsTool
             this.nameToolStripMenuItem,
             this.valueToolStripMenuItem});
             this.sortToolStripMenuItem.Name = "sortToolStripMenuItem";
-            this.sortToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.sortToolStripMenuItem.Text = "Sort";
+            this.sortToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.sortToolStripMenuItem.Text = "排序";
             // 
             // nameToolStripMenuItem
             // 
@@ -331,15 +323,15 @@ namespace UE4localizationsTool
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(210, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(225, 6);
             // 
             // undoToolStripMenuItem
             // 
             this.undoToolStripMenuItem.Enabled = false;
             this.undoToolStripMenuItem.Name = "undoToolStripMenuItem";
             this.undoToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+Z";
-            this.undoToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.undoToolStripMenuItem.Text = "Undo";
+            this.undoToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.undoToolStripMenuItem.Text = "撤销";
             this.undoToolStripMenuItem.Click += new System.EventHandler(this.undoToolStripMenuItem_Click);
             // 
             // redoToolStripMenuItem
@@ -349,45 +341,89 @@ namespace UE4localizationsTool
             this.redoToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+Shift+Z/Ctrl+Y";
             this.redoToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
             | System.Windows.Forms.Keys.Z)));
-            this.redoToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.redoToolStripMenuItem.Text = "Redo";
+            this.redoToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.redoToolStripMenuItem.Text = "重做";
             this.redoToolStripMenuItem.Click += new System.EventHandler(this.redoToolStripMenuItem_Click);
             // 
             // copyToolStripMenuItem1
             // 
             this.copyToolStripMenuItem1.Name = "copyToolStripMenuItem1";
             this.copyToolStripMenuItem1.ShortcutKeyDisplayString = "Ctrl+C";
-            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(213, 22);
-            this.copyToolStripMenuItem1.Text = "Copy";
+            this.copyToolStripMenuItem1.Size = new System.Drawing.Size(228, 22);
+            this.copyToolStripMenuItem1.Text = "复制";
             this.copyToolStripMenuItem1.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
             // 
             // pasteToolStripMenuItem1
             // 
             this.pasteToolStripMenuItem1.Name = "pasteToolStripMenuItem1";
             this.pasteToolStripMenuItem1.ShortcutKeyDisplayString = "Ctrl+V";
-            this.pasteToolStripMenuItem1.Size = new System.Drawing.Size(213, 22);
-            this.pasteToolStripMenuItem1.Text = "Paste";
+            this.pasteToolStripMenuItem1.Size = new System.Drawing.Size(228, 22);
+            this.pasteToolStripMenuItem1.Text = "粘贴";
             this.pasteToolStripMenuItem1.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(210, 6);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(225, 6);
             // 
             // fontToolStripMenuItem
             // 
             this.fontToolStripMenuItem.Name = "fontToolStripMenuItem";
-            this.fontToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.fontToolStripMenuItem.Text = "Font";
+            this.fontToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.fontToolStripMenuItem.Text = "字体";
             this.fontToolStripMenuItem.Click += new System.EventHandler(this.fontToolStripMenuItem_Click);
             // 
             // rightToLeftToolStripMenuItem
             // 
             this.rightToLeftToolStripMenuItem.Name = "rightToLeftToolStripMenuItem";
             this.rightToLeftToolStripMenuItem.ShortcutKeyDisplayString = "";
-            this.rightToLeftToolStripMenuItem.Size = new System.Drawing.Size(213, 22);
-            this.rightToLeftToolStripMenuItem.Text = "Right to left (on/off)";
+            this.rightToLeftToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.rightToLeftToolStripMenuItem.Text = "从右到左 (开/关)";
             this.rightToLeftToolStripMenuItem.Click += new System.EventHandler(this.rightToLeftToolStripMenuItem_Click);
+            // 
+            // darkModeToolStripMenuItem
+            // 
+            this.darkModeToolStripMenuItem.CheckOnClick = true;
+            this.darkModeToolStripMenuItem.Name = "darkModeToolStripMenuItem";
+            this.darkModeToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.D)));
+            this.darkModeToolStripMenuItem.Size = new System.Drawing.Size(228, 22);
+            this.darkModeToolStripMenuItem.Text = "深色模式";
+            this.darkModeToolStripMenuItem.CheckedChanged += new System.EventHandler(this.darkModeToolStripMenuItem_CheckedChanged);
+            // 
+            // Checkforupdates
+            // 
+            this.Checkforupdates.CheckOnClick = true;
+            this.Checkforupdates.Name = "Checkforupdates";
+            this.Checkforupdates.Size = new System.Drawing.Size(228, 22);
+            this.Checkforupdates.Text = "检查更新";
+            this.Checkforupdates.CheckedChanged += new System.EventHandler(this.Checkforupdates_CheckedChanged);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(225, 6);
+            // 
+            // Method2
+            // 
+            this.Method2.CheckOnClick = true;
+            this.Method2.Name = "Method2";
+            this.Method2.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.M)));
+            this.Method2.Size = new System.Drawing.Size(228, 22);
+            this.Method2.Text = "使用方法 2";
+            this.Method2.ToolTipText = "trying to catch text without using ue4 asset structure (for uasset and umap only)" +
+    "";
+            this.Method2.CheckedChanged += new System.EventHandler(this.Method2_CheckedChanged);
+            // 
+            // UseFixedSize
+            // 
+            this.UseFixedSize.CheckOnClick = true;
+            this.UseFixedSize.Name = "UseFixedSize";
+            this.UseFixedSize.Size = new System.Drawing.Size(228, 22);
+            this.UseFixedSize.Text = "固定尺寸";
+            this.UseFixedSize.Visible = false;
             // 
             // aboutToolStripMenuItem
             // 
@@ -396,8 +432,8 @@ namespace UE4localizationsTool
             this.donateToolStripMenuItem,
             this.aboutToolStripMenuItem1});
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
-            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
+            this.aboutToolStripMenuItem.Text = "关于";
             // 
             // commandLinesToolStripMenuItem
             // 
@@ -406,12 +442,84 @@ namespace UE4localizationsTool
             this.commandLinesToolStripMenuItem.Text = "命令";
             this.commandLinesToolStripMenuItem.Click += new System.EventHandler(this.commandLinesToolStripMenuItem_Click);
             // 
+            // donateToolStripMenuItem
+            // 
+            this.donateToolStripMenuItem.Name = "donateToolStripMenuItem";
+            this.donateToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.donateToolStripMenuItem.Text = "捐赠";
+            this.donateToolStripMenuItem.Click += new System.EventHandler(this.donateToolStripMenuItem_Click);
+            // 
             // aboutToolStripMenuItem1
             // 
             this.aboutToolStripMenuItem1.Name = "aboutToolStripMenuItem1";
             this.aboutToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.aboutToolStripMenuItem1.Text = "关于";
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.aboutToolStripMenuItem1_Click);
+            // 
+            // DataCount
+            // 
+            this.DataCount.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.DataCount.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.DataCount.Name = "DataCount";
+            this.DataCount.Size = new System.Drawing.Size(58, 21);
+            this.DataCount.Text = "----------";
+            // 
+            // locresOprationsToolStripMenuItem
+            // 
+            this.locresOprationsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.editSelectedRowToolStripMenuItem,
+            this.removeSelectedRowToolStripMenuItem,
+            this.addNewRowToolStripMenuItem,
+            this.mergeLocresFileToolStripMenuItem,
+            this.mergeUassetFileToolStripMenuItem});
+            this.locresOprationsToolStripMenuItem.Name = "locresOprationsToolStripMenuItem";
+            this.locresOprationsToolStripMenuItem.Size = new System.Drawing.Size(86, 24);
+            this.locresOprationsToolStripMenuItem.Text = "Locres 编辑";
+            this.locresOprationsToolStripMenuItem.Visible = false;
+            // 
+            // editSelectedRowToolStripMenuItem
+            // 
+            this.editSelectedRowToolStripMenuItem.Name = "editSelectedRowToolStripMenuItem";
+            this.editSelectedRowToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.editSelectedRowToolStripMenuItem.Text = "编辑选择行";
+            this.editSelectedRowToolStripMenuItem.Click += new System.EventHandler(this.editSelectedRowToolStripMenuItem_Click);
+            // 
+            // removeSelectedRowToolStripMenuItem
+            // 
+            this.removeSelectedRowToolStripMenuItem.Name = "removeSelectedRowToolStripMenuItem";
+            this.removeSelectedRowToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.removeSelectedRowToolStripMenuItem.Text = "删除选择行";
+            this.removeSelectedRowToolStripMenuItem.Click += new System.EventHandler(this.removeSelectedRowToolStripMenuItem_Click);
+            // 
+            // addNewRowToolStripMenuItem
+            // 
+            this.addNewRowToolStripMenuItem.Name = "addNewRowToolStripMenuItem";
+            this.addNewRowToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.addNewRowToolStripMenuItem.Text = "添加行";
+            this.addNewRowToolStripMenuItem.Click += new System.EventHandler(this.addNewRowToolStripMenuItem_Click);
+            // 
+            // mergeLocresFileToolStripMenuItem
+            // 
+            this.mergeLocresFileToolStripMenuItem.Name = "mergeLocresFileToolStripMenuItem";
+            this.mergeLocresFileToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.mergeLocresFileToolStripMenuItem.Text = "合并 Locres 文件";
+            this.mergeLocresFileToolStripMenuItem.Click += new System.EventHandler(this.mergeLocresFileToolStripMenuItem_Click);
+            // 
+            // mergeUassetFileToolStripMenuItem
+            // 
+            this.mergeUassetFileToolStripMenuItem.Name = "mergeUassetFileToolStripMenuItem";
+            this.mergeUassetFileToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.mergeUassetFileToolStripMenuItem.Text = "合并 Uasset 文件 (Beta)";
+            this.mergeUassetFileToolStripMenuItem.Click += new System.EventHandler(this.mergeUassetFileToolStripMenuItem_Click);
+            // 
+            // StateLabel
+            // 
+            this.StateLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.StateLabel.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.StateLabel.ForeColor = System.Drawing.Color.Maroon;
+            this.StateLabel.Name = "StateLabel";
+            this.StateLabel.Size = new System.Drawing.Size(57, 21);
+            this.StateLabel.Text = "----------";
             // 
             // dataGridView1
             // 
@@ -434,7 +542,7 @@ namespace UE4localizationsTool
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.dataGridView1.Size = new System.Drawing.Size(689, 423);
+            this.dataGridView1.Size = new System.Drawing.Size(689, 356);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.FilterApplied += new System.EventHandler(this.dataGridView1_FilterApplied);
             this.dataGridView1.FilterCleared += new System.EventHandler(this.dataGridView1_FilterCleared);
@@ -467,139 +575,86 @@ namespace UE4localizationsTool
             // 
             // pictureBox1
             // 
-            this.SearchPanal.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchPanal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.SearchPanal.Controls.Add(this.searchcount);
-            this.SearchPanal.Controls.Add(this.SearchHide);
-            this.SearchPanal.Controls.Add(this.FindPrevious);
-            this.SearchPanal.Controls.Add(this.FindNext);
-            this.SearchPanal.Controls.Add(this.label1);
-            this.SearchPanal.Controls.Add(this.InputSearch);
-            this.SearchPanal.Location = new System.Drawing.Point(0, 420);
-            this.SearchPanal.Name = "SearchPanal";
-            this.SearchPanal.Size = new System.Drawing.Size(689, 30);
-            this.SearchPanal.TabIndex = 2;
-            this.SearchPanal.Visible = false;
+            this.pictureBox1.BackColor = System.Drawing.Color.Green;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(5, 23);
+            this.pictureBox1.TabIndex = 6;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Visible = false;
             // 
             // searchBox
             // 
-            this.searchcount.Location = new System.Drawing.Point(423, 7);
-            this.searchcount.Name = "searchcount";
-            this.searchcount.Size = new System.Drawing.Size(211, 18);
-            this.searchcount.TabIndex = 6;
-            this.searchcount.Click += new System.EventHandler(this.label2_Click);
+            this.searchBox.AutoSize = true;
+            this.searchBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.searchBox.DataGridView = this.dataGridView1;
+            this.searchBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.searchBox.Location = new System.Drawing.Point(0, 380);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(689, 35);
+            this.searchBox.TabIndex = 2;
+            this.searchBox.Visible = false;
+            this.searchBox.Load += new System.EventHandler(this.searchBox_Load);
             // 
             // StatusBlock
             // 
-            this.SearchHide.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.SearchHide.AutoSize = true;
-            this.SearchHide.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SearchHide.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SearchHide.Location = new System.Drawing.Point(664, 6);
-            this.SearchHide.Name = "SearchHide";
-            this.SearchHide.Size = new System.Drawing.Size(18, 17);
-            this.SearchHide.TabIndex = 5;
-            this.SearchHide.Text = "X";
-            this.SearchHide.Click += new System.EventHandler(this.SearchHide_Click);
+            this.StatusBlock.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.StatusBlock.AutoSize = true;
+            this.StatusBlock.BackColor = System.Drawing.Color.White;
+            this.StatusBlock.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.StatusBlock.Controls.Add(this.StatusText);
+            this.StatusBlock.Controls.Add(this.StatusTitle);
+            this.StatusBlock.Controls.Add(this.pictureBox2);
+            this.StatusBlock.Location = new System.Drawing.Point(189, 161);
+            this.StatusBlock.Name = "StatusBlock";
+            this.StatusBlock.Size = new System.Drawing.Size(310, 95);
+            this.StatusBlock.TabIndex = 8;
+            this.StatusBlock.Visible = false;
             // 
             // StatusText
             // 
-            this.FindPrevious.Location = new System.Drawing.Point(331, 4);
-            this.FindPrevious.Name = "FindPrevious";
-            this.FindPrevious.Size = new System.Drawing.Size(86, 23);
-            this.FindPrevious.TabIndex = 4;
-            this.FindPrevious.Text = "Find Previous";
-            this.FindPrevious.UseVisualStyleBackColor = true;
-            this.FindPrevious.Click += new System.EventHandler(this.FindPrevious_Click);
+            this.StatusText.AutoSize = true;
+            this.StatusText.Location = new System.Drawing.Point(106, 60);
+            this.StatusText.Name = "StatusText";
+            this.StatusText.Size = new System.Drawing.Size(47, 12);
+            this.StatusText.TabIndex = 2;
+            this.StatusText.Text = "-------";
             // 
-            // FindNext
+            // StatusTitle
             // 
-            this.FindNext.Location = new System.Drawing.Point(250, 4);
-            this.FindNext.Name = "FindNext";
-            this.FindNext.Size = new System.Drawing.Size(75, 23);
-            this.FindNext.TabIndex = 3;
-            this.FindNext.Text = "Find Next";
-            this.FindNext.UseVisualStyleBackColor = true;
-            this.FindNext.Click += new System.EventHandler(this.FindNext_Click);
+            this.StatusTitle.AutoSize = true;
+            this.StatusTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.StatusTitle.Location = new System.Drawing.Point(103, 20);
+            this.StatusTitle.Name = "StatusTitle";
+            this.StatusTitle.Size = new System.Drawing.Size(114, 31);
+            this.StatusTitle.TabIndex = 0;
+            this.StatusTitle.Text = "----------";
             // 
-            // label1
+            // pictureBox2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(56, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Find what:";
-            // 
-            // InputSearch
-            // 
-            this.InputSearch.Location = new System.Drawing.Point(79, 5);
-            this.InputSearch.Name = "InputSearch";
-            this.InputSearch.Size = new System.Drawing.Size(162, 20);
-            this.InputSearch.TabIndex = 0;
-            this.InputSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.InputSearch_KeyDown);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.copyToolStripMenuItem,
-            this.pasteToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(145, 48);
-            // 
-            // copyToolStripMenuItem
-            // 
-            this.copyToolStripMenuItem.Name = "copyToolStripMenuItem";
-            this.copyToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+C";
-            this.copyToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.copyToolStripMenuItem.Text = "Copy";
-            this.copyToolStripMenuItem.Click += new System.EventHandler(this.copyToolStripMenuItem_Click);
-            // 
-            // pasteToolStripMenuItem
-            // 
-            this.pasteToolStripMenuItem.Name = "pasteToolStripMenuItem";
-            this.pasteToolStripMenuItem.ShortcutKeyDisplayString = "Ctrl+V";
-            this.pasteToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.pasteToolStripMenuItem.Text = "Paste";
-            this.pasteToolStripMenuItem.Click += new System.EventHandler(this.pasteToolStripMenuItem_Click);
-            // 
-            // StateLabel
-            // 
-            this.StateLabel.AutoSize = true;
-            this.StateLabel.Location = new System.Drawing.Point(171, 10);
-            this.StateLabel.Name = "StateLabel";
-            this.StateLabel.Size = new System.Drawing.Size(64, 13);
-            this.StateLabel.TabIndex = 3;
-            this.StateLabel.Tag = "";
-            this.StateLabel.Text = "-------------------";
-            // 
-            // DataCount
-            // 
-            this.DataCount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.DataCount.Location = new System.Drawing.Point(487, 9);
-            this.DataCount.Name = "DataCount";
-            this.DataCount.Size = new System.Drawing.Size(200, 15);
-            this.DataCount.TabIndex = 5;
-            this.DataCount.Text = "------";
-            this.DataCount.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(9, 11);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(82, 72);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 1;
+            this.pictureBox2.TabStop = false;
             // 
             // FrmMain
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(689, 450);
-            this.Controls.Add(this.DataCount);
-            this.Controls.Add(this.StateLabel);
-            this.Controls.Add(this.SearchPanal);
+            this.ClientSize = new System.Drawing.Size(689, 415);
+            this.Controls.Add(this.StatusBlock);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.searchBox);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.MinimumSize = new System.Drawing.Size(705, 489);
+            this.MinimumSize = new System.Drawing.Size(704, 453);
             this.Name = "FrmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UE4 localizations Tool";

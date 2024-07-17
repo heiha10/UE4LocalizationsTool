@@ -17,7 +17,7 @@ namespace AssetParser
             int CompressedSize = memoryList.GetIntValue();
             if (UncompressedSize != CompressedSize)
             {
-                throw new Exception("Can't Parse this file.");
+                throw new Exception("无法解析此文件。");
             }
             int StartPosition = memoryList.GetIntValue();// Uasset+Position 
             memoryList.Skip(4);

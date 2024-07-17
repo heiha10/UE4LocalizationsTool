@@ -52,27 +52,27 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 148);
+            this.label3.Location = new System.Drawing.Point(12, 137);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 13);
+            this.label3.Size = new System.Drawing.Size(35, 12);
             this.label3.TabIndex = 8;
             this.label3.Text = "Value";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 79);
+            this.label2.Location = new System.Drawing.Point(12, 73);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(25, 13);
+            this.label2.Size = new System.Drawing.Size(23, 12);
             this.label2.TabIndex = 7;
             this.label2.Text = "Key";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 17);
+            this.label1.Location = new System.Drawing.Point(12, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(63, 13);
+            this.label1.Size = new System.Drawing.Size(59, 12);
             this.label1.TabIndex = 6;
             this.label1.Text = "NameSpace";
             // 
@@ -80,22 +80,22 @@
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.button2.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.button2.Location = new System.Drawing.Point(315, 328);
+            this.button2.Location = new System.Drawing.Point(315, 303);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(75, 21);
             this.button2.TabIndex = 5;
-            this.button2.Text = "Cancel";
+            this.button2.Text = "取消";
             this.button2.UseVisualStyleBackColor = true;
             // 
             // Apply
             // 
             this.Apply.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.Apply.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.Apply.Location = new System.Drawing.Point(210, 328);
+            this.Apply.Location = new System.Drawing.Point(210, 303);
             this.Apply.Name = "Apply";
-            this.Apply.Size = new System.Drawing.Size(75, 23);
+            this.Apply.Size = new System.Drawing.Size(75, 21);
             this.Apply.TabIndex = 4;
-            this.Apply.Text = "Apply";
+            this.Apply.Text = "应用";
             this.Apply.UseVisualStyleBackColor = true;
             this.Apply.Click += new System.EventHandler(this.Apply_Click);
             // 
@@ -103,11 +103,11 @@
             // 
             this.txtValue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtValue.Location = new System.Drawing.Point(12, 164);
+            this.txtValue.Location = new System.Drawing.Point(12, 151);
             this.txtValue.Multiline = true;
             this.txtValue.Name = "txtValue";
             this.txtValue.PlaceholderText = "";
-            this.txtValue.Size = new System.Drawing.Size(588, 97);
+            this.txtValue.Size = new System.Drawing.Size(588, 90);
             this.txtValue.StopEnterKey = true;
             this.txtValue.TabIndex = 3;
             this.txtValue.TextChanged += new System.EventHandler(this.txtValue_TextChanged);
@@ -116,11 +116,11 @@
             // 
             this.txtKey.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtKey.Location = new System.Drawing.Point(12, 95);
+            this.txtKey.Location = new System.Drawing.Point(12, 88);
             this.txtKey.Multiline = true;
             this.txtKey.Name = "txtKey";
             this.txtKey.PlaceholderText = "";
-            this.txtKey.Size = new System.Drawing.Size(409, 36);
+            this.txtKey.Size = new System.Drawing.Size(409, 34);
             this.txtKey.StopEnterKey = true;
             this.txtKey.TabIndex = 1;
             this.txtKey.TextChanged += new System.EventHandler(this.txtKey_TextChanged);
@@ -129,11 +129,11 @@
             // 
             this.txtNameSpace.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNameSpace.Location = new System.Drawing.Point(12, 33);
+            this.txtNameSpace.Location = new System.Drawing.Point(12, 30);
             this.txtNameSpace.Multiline = true;
             this.txtNameSpace.Name = "txtNameSpace";
             this.txtNameSpace.PlaceholderText = "";
-            this.txtNameSpace.Size = new System.Drawing.Size(409, 34);
+            this.txtNameSpace.Size = new System.Drawing.Size(409, 32);
             this.txtNameSpace.StopEnterKey = true;
             this.txtNameSpace.TabIndex = 0;
             this.txtNameSpace.TextChanged += new System.EventHandler(this.txtNameSpace_TextChanged);
@@ -141,22 +141,22 @@
             // txtNameSapceHash
             // 
             this.txtNameSapceHash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtNameSapceHash.Location = new System.Drawing.Point(427, 33);
+            this.txtNameSapceHash.Location = new System.Drawing.Point(427, 30);
             this.txtNameSapceHash.Multiline = true;
             this.txtNameSapceHash.Name = "txtNameSapceHash";
             this.txtNameSapceHash.PlaceholderText = "";
-            this.txtNameSapceHash.Size = new System.Drawing.Size(145, 34);
+            this.txtNameSapceHash.Size = new System.Drawing.Size(145, 32);
             this.txtNameSapceHash.StopEnterKey = true;
             this.txtNameSapceHash.TabIndex = 9;
             // 
             // txtKeyHash
             // 
             this.txtKeyHash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtKeyHash.Location = new System.Drawing.Point(427, 95);
+            this.txtKeyHash.Location = new System.Drawing.Point(427, 88);
             this.txtKeyHash.Multiline = true;
             this.txtKeyHash.Name = "txtKeyHash";
             this.txtKeyHash.PlaceholderText = "";
-            this.txtKeyHash.Size = new System.Drawing.Size(146, 36);
+            this.txtKeyHash.Size = new System.Drawing.Size(146, 34);
             this.txtKeyHash.StopEnterKey = true;
             this.txtKeyHash.TabIndex = 10;
             // 
@@ -164,9 +164,9 @@
             // 
             this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(427, 14);
+            this.label4.Location = new System.Drawing.Point(427, 13);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(89, 13);
+            this.label4.Size = new System.Drawing.Size(89, 12);
             this.label4.TabIndex = 11;
             this.label4.Text = "NameSapce hash";
             // 
@@ -174,9 +174,9 @@
             // 
             this.KeyHash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.KeyHash.AutoSize = true;
-            this.KeyHash.Location = new System.Drawing.Point(427, 79);
+            this.KeyHash.Location = new System.Drawing.Point(427, 73);
             this.KeyHash.Name = "KeyHash";
-            this.KeyHash.Size = new System.Drawing.Size(51, 13);
+            this.KeyHash.Size = new System.Drawing.Size(53, 12);
             this.KeyHash.TabIndex = 12;
             this.KeyHash.Text = "Key hash";
             // 
@@ -184,29 +184,29 @@
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(366, 277);
+            this.label6.Location = new System.Drawing.Point(366, 256);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(59, 13);
+            this.label6.Size = new System.Drawing.Size(65, 12);
             this.label6.TabIndex = 14;
             this.label6.Text = "Value hash";
             // 
             // txtValueHash
             // 
             this.txtValueHash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtValueHash.Location = new System.Drawing.Point(430, 267);
+            this.txtValueHash.Location = new System.Drawing.Point(430, 246);
             this.txtValueHash.Multiline = true;
             this.txtValueHash.Name = "txtValueHash";
             this.txtValueHash.PlaceholderText = "";
-            this.txtValueHash.Size = new System.Drawing.Size(143, 30);
+            this.txtValueHash.Size = new System.Drawing.Size(143, 28);
             this.txtValueHash.StopEnterKey = true;
             this.txtValueHash.TabIndex = 13;
             // 
             // BtnNameSpace
             // 
             this.BtnNameSpace.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnNameSpace.Location = new System.Drawing.Point(578, 33);
+            this.BtnNameSpace.Location = new System.Drawing.Point(578, 30);
             this.BtnNameSpace.Name = "BtnNameSpace";
-            this.BtnNameSpace.Size = new System.Drawing.Size(24, 33);
+            this.BtnNameSpace.Size = new System.Drawing.Size(24, 30);
             this.BtnNameSpace.TabIndex = 15;
             this.BtnNameSpace.Text = "C";
             this.BtnNameSpace.UseVisualStyleBackColor = true;
@@ -215,9 +215,9 @@
             // BtnKey
             // 
             this.BtnKey.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnKey.Location = new System.Drawing.Point(579, 95);
+            this.BtnKey.Location = new System.Drawing.Point(579, 88);
             this.BtnKey.Name = "BtnKey";
-            this.BtnKey.Size = new System.Drawing.Size(24, 36);
+            this.BtnKey.Size = new System.Drawing.Size(24, 33);
             this.BtnKey.TabIndex = 16;
             this.BtnKey.Text = "C";
             this.BtnKey.UseVisualStyleBackColor = true;
@@ -226,9 +226,9 @@
             // BtnValue
             // 
             this.BtnValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnValue.Location = new System.Drawing.Point(579, 267);
+            this.BtnValue.Location = new System.Drawing.Point(579, 246);
             this.BtnValue.Name = "BtnValue";
-            this.BtnValue.Size = new System.Drawing.Size(24, 30);
+            this.BtnValue.Size = new System.Drawing.Size(24, 28);
             this.BtnValue.TabIndex = 17;
             this.BtnValue.Text = "C";
             this.BtnValue.UseVisualStyleBackColor = true;
@@ -236,9 +236,9 @@
             // 
             // FrmLocresEntryEditor
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(612, 370);
+            this.ClientSize = new System.Drawing.Size(612, 342);
             this.Controls.Add(this.BtnValue);
             this.Controls.Add(this.BtnKey);
             this.Controls.Add(this.BtnNameSpace);
@@ -256,11 +256,11 @@
             this.Controls.Add(this.txtValue);
             this.Controls.Add(this.txtKey);
             this.Controls.Add(this.txtNameSpace);
-            this.MinimumSize = new System.Drawing.Size(519, 378);
+            this.MinimumSize = new System.Drawing.Size(519, 352);
             this.Name = "FrmLocresEntryEditor";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Row Editor";
+            this.Text = "行编辑器";
             this.ResumeLayout(false);
             this.PerformLayout();
 
