@@ -18,6 +18,11 @@ namespace AssetParser
                 Console.ForegroundColor = color;
                 Console.WriteLine(Str);
                 Console.ForegroundColor = ConsoleColor.White;
+                if (type == ConsoleModeType.Error && StopInError) 
+                {
+                    Print("按 \"Enter\" 继续...", ConsoleColor.White);
+                    Console.ReadLine(); 
+                }
             }
         }
     }

@@ -70,7 +70,7 @@ namespace UE4localizationsTool.Forms
         {
             InitializeComponent();
             this.Location = new Point(form.Location.X + (form.Width - this.Width) / 2, form.Location.Y + (form.Height - this.Height) / 2);
-            Apply.Text = "Add";
+            Apply.Text = "添加";
             this.asset = asset;
         }
 
@@ -157,13 +157,13 @@ namespace UE4localizationsTool.Forms
         {
             if (string.IsNullOrEmpty(txtNameSapceHash.Text) || string.IsNullOrEmpty(txtKeyHash.Text) || string.IsNullOrEmpty(txtValueHash.Text))
             {
-                MessageBox.Show("NameSpace or Key or Value is empty");
+                MessageBox.Show("NameSpace or Key or Value 为空");
                 return;
             }
 
             if (!uint.TryParse(txtNameSapceHash.Text, out uint temp) || !uint.TryParse(txtKeyHash.Text, out uint temp1) || !uint.TryParse(txtValueHash.Text, out uint temp2))
             {
-                MessageBox.Show("NameSpace or Key or Value is not a number");
+                MessageBox.Show("NameSpace or Key or Value 不是数字");
                 return;
             }
         }

@@ -48,7 +48,7 @@ namespace AssetParser
 
             IsNotUseUexp = true;
             UassetFile.MemoryListPosition = 0;
-            ConsoleMode.Print("Reading Uasset Header...");
+            ConsoleMode.Print("正在读取 Uasset 标头...");
             Console.WriteLine(UassetFile.GetIntValue(false, 4));
 
 
@@ -145,7 +145,7 @@ namespace AssetParser
 
             if (bHasVersioningInfo)
             {
-                throw new Exception("Not supported uasset!");
+                throw new Exception("不支持的 uasset!");
             }
 
             //----------------------

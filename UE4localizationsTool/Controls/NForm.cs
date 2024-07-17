@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.Windows.Forms;
+using System;
 
 namespace UE4localizationsTool.Controls
 {
@@ -231,6 +232,24 @@ namespace UE4localizationsTool.Controls
             public override Color ToolStripGradientBegin => Color.FromArgb(30, 30, 30);
             public override Color ToolStripGradientMiddle => Color.FromArgb(30, 30, 30);
             public override Color ToolStripGradientEnd => Color.FromArgb(30, 30, 30);
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // NForm
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Name = "NForm";
+            this.Load += new System.EventHandler(this.NForm_Load);
+            this.ResumeLayout(false);
+
+        }
+
+        private void NForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

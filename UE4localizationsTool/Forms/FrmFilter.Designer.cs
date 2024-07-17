@@ -41,6 +41,10 @@
             this.BtnClose = new System.Windows.Forms.Button();
             this.regularexpression = new System.Windows.Forms.CheckBox();
             this.reversemode = new System.Windows.Forms.CheckBox();
+            this.列 = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.ColumnPanel = new System.Windows.Forms.Panel();
+            this.ColumnPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // button1
@@ -137,15 +141,15 @@
             // 
             // BtnClose
             // 
-            this.Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Close.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.Close.Location = new System.Drawing.Point(441, 110);
-            this.Close.Name = "Close";
-            this.Close.Size = new System.Drawing.Size(113, 23);
-            this.Close.TabIndex = 10;
-            this.Close.Text = "Close";
-            this.Close.UseVisualStyleBackColor = true;
-            this.Close.Click += new System.EventHandler(this.Close_Click);
+            this.BtnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.BtnClose.Location = new System.Drawing.Point(441, 102);
+            this.BtnClose.Name = "BtnClose";
+            this.BtnClose.Size = new System.Drawing.Size(113, 21);
+            this.BtnClose.TabIndex = 10;
+            this.BtnClose.Text = "关闭";
+            this.BtnClose.UseVisualStyleBackColor = true;
+            this.BtnClose.Click += new System.EventHandler(this.Close_Click);
             // 
             // regularexpression
             // 
@@ -168,13 +172,41 @@
             this.reversemode.Text = "排除模式";
             this.reversemode.UseVisualStyleBackColor = true;
             // 
+            // 列
+            // 
+            this.列.FormattingEnabled = true;
+            this.列.Location = new System.Drawing.Point(58, 3);
+            this.列.Name = "列";
+            this.列.Size = new System.Drawing.Size(156, 20);
+            this.列.TabIndex = 13;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 6);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 12);
+            this.label2.TabIndex = 14;
+            this.label2.Text = "行：";
+            // 
+            // ColumnPanel
+            // 
+            this.ColumnPanel.Controls.Add(this.列);
+            this.ColumnPanel.Controls.Add(this.label2);
+            this.ColumnPanel.Location = new System.Drawing.Point(211, 116);
+            this.ColumnPanel.Name = "ColumnPanel";
+            this.ColumnPanel.Size = new System.Drawing.Size(224, 25);
+            this.ColumnPanel.TabIndex = 15;
+            this.ColumnPanel.Visible = false;
+            // 
             // FrmFilter
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(584, 261);
+            this.ClientSize = new System.Drawing.Size(584, 241);
+            this.Controls.Add(this.ColumnPanel);
             this.Controls.Add(this.reversemode);
             this.Controls.Add(this.regularexpression);
             this.Controls.Add(this.BtnClose);
@@ -219,5 +251,8 @@
         private System.Windows.Forms.Button BtnClose;
         private System.Windows.Forms.CheckBox regularexpression;
         private System.Windows.Forms.CheckBox reversemode;
+        private System.Windows.Forms.ComboBox 列;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel ColumnPanel;
     }
 }

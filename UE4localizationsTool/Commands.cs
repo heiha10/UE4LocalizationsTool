@@ -51,8 +51,8 @@ namespace UE4localizationsTool
                 case "export"://Single File
                     Strings = new List<List<string>>();
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    ConsoleText = $"Exporting... '{Path.GetFileName(SourcePath)}' ";
-                    Console.WriteLine(ConsoleText);
+                    ConsoleText = $"正在导出... '{Path.GetFileName(SourcePath)}' ";
+                    Console.Write(ConsoleText);
                     Console.ForegroundColor = ConsoleColor.White;
 
                     Strings = Export(SourcePath);
@@ -63,8 +63,7 @@ namespace UE4localizationsTool
                     }
 
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.SetCursorPosition(ConsoleText.Length, Console.CursorTop - 1);
-                    Console.WriteLine("Done");
+                    Console.Write("完成\n");
                     Console.ForegroundColor = ConsoleColor.White;
 
                     SaveTextFile(SourcePath + TextFileExtension);
@@ -81,8 +80,8 @@ namespace UE4localizationsTool
                 case "import"://Single File
                 case "-import"://Single File Without rename
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    ConsoleText = $"Importing... '{Path.GetFileName(SourcePath)}' ";
-                    Console.WriteLine(ConsoleText);
+                    ConsoleText = $"正在导入... '{Path.GetFileName(SourcePath)}' ";
+                    Console.Write(ConsoleText);
                     Console.ForegroundColor = ConsoleColor.White;
 
                     if (!SourcePath.EndsWith(TextFileExtension, StringComparison.OrdinalIgnoreCase))
@@ -101,10 +100,9 @@ namespace UE4localizationsTool
                         rows = File.ReadAllLines(SourcePath);
                     }
 
-                    Import(Path.ChangeExtension(SourcePath, null), File.ReadAllLines(SourcePath), Options.ToLower());
+                    Import(Path.ChangeExtension(SourcePath, null), rows, Options.ToLower());
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.SetCursorPosition(ConsoleText.Length, Console.CursorTop - 1);
-                    Console.WriteLine("Done");
+                    Console.Write("完成\n");
                     Console.ForegroundColor = ConsoleColor.White;
 
 
@@ -114,12 +112,24 @@ namespace UE4localizationsTool
                 case "-importall"://Folders Without rename Files
                     Paths = SourcePath.Split(new char[] { '*' }, 2);
 
-                    if (!Paths[1].EndsWith(".txt", StringComparison.OrdinalIgnoreCase))
+                    if (!Paths[1].EndsWith(TextFileExtension, StringComparison.OrdinalIgnoreCase))
+                    {
+                        throw new Exception("无效的文本类型： " + Path.GetFileName(SourcePath));
+                    }
+
+
+
+                    if (Flags.HasFlag(Args.CSV))
+                    {
+                        rows = CSVFile.Instance.Load(Paths[1], Flags.HasFlag(Args.noname));
+                    }
+                    else
                     {
                         rows = File.ReadAllLines(Paths[1]);
                     }
 
-                    ImportFolder(Paths[0], File.ReadAllLines(Paths[1]), Options.ToLower());
+
+                    ImportFolder(Paths[0], rows, Options.ToLower());
                     break;
                 default:
                     throw new Exception("参数无效。\n" + Program.commandlines);
@@ -131,8 +141,8 @@ namespace UE4localizationsTool
         private void SaveTextFile(string FilePath)
         {
             Console.ForegroundColor = ConsoleColor.Blue;
-            string ConsoleText = "Saving text file... ";
-            Console.WriteLine(ConsoleText);
+            string ConsoleText = "正在保存文本文件... ";
+            Console.Write(ConsoleText);
             Console.ForegroundColor = ConsoleColor.White;
 
 
@@ -168,8 +178,7 @@ namespace UE4localizationsTool
             File.WriteAllLines(FilePath, stringsArray);
         End:
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.SetCursorPosition(ConsoleText.Length, Console.CursorTop - 1);
-            Console.WriteLine("Done");
+            Console.Write("完成\n");
             Console.ForegroundColor = ConsoleColor.White;
         }
 
@@ -188,12 +197,18 @@ namespace UE4localizationsTool
                 return locres.ExtractTexts();
                 //  SizeOfRecord = locres.Strings.Count;
             }
-            else if (FilePath.EndsWith(".uasset", StringComparison.OrdinalIgnoreCase))
+            else if (FilePath.EndsWith(".uasset", StringComparison.OrdinalIgnoreCase) || FilePath.EndsWith(".umap", StringComparison.OrdinalIgnoreCase))
             {
-                Uasset Uasset = new Uasset(FilePath);
-                Uexp Uexp = new Uexp(Uasset);
-                return Uexp.Strings;
-                //  SizeOfRecord = Uexp.Strings.Count;
+                IUasset Uasset = Uexp.GetUasset(FilePath);
+
+                if (Flags.HasFlag(Args.method2))
+                {
+                    Uasset.UseMethod2 = true;
+                }
+
+                Uexp uexp = new Uexp(Uasset);
+                return uexp.Strings;
+                //  SizeOfRecord = uexp.Strings.Count;
             }
             else
             {
@@ -209,8 +224,8 @@ namespace UE4localizationsTool
                 throw new Exception("目录不存在： " + FolderPath);
             }
             Console.ForegroundColor = ConsoleColor.Blue;
-            string ConsoleText = "Scaning for files...";
-            Console.WriteLine(ConsoleText);
+            string ConsoleText = "正在扫描文件...";
+            Console.Write(ConsoleText);
             Console.ForegroundColor = ConsoleColor.White;
 
             string[] LanguageFiles = Directory.GetFiles(FolderPath, "*.*", SearchOption.AllDirectories).Where(x => x.EndsWith(".locres", StringComparison.OrdinalIgnoreCase) || x.EndsWith(".uasset", StringComparison.OrdinalIgnoreCase) || x.EndsWith(".umap", StringComparison.OrdinalIgnoreCase)).ToArray<string>();
@@ -226,8 +241,8 @@ namespace UE4localizationsTool
             for (int i = 0; i < LanguageFiles.Count(); i++)
             {
                 Console.ForegroundColor = ConsoleColor.Blue;
-                ConsoleText = $"[{ i + 1}:{LanguageFiles.Count()}] Exporting... '{Path.GetFileName(LanguageFiles[i])}' ";
-                Console.WriteLine(ConsoleText);
+                ConsoleText = $"[{i + 1}:{LanguageFiles.Count()}] 正在导出... '{Path.GetFileName(LanguageFiles[i])}' ";
+                Console.Write(ConsoleText);
                 Console.ForegroundColor = ConsoleColor.White;
 
                 int ThisPosition = Strings.Count - 1;
@@ -247,8 +262,7 @@ namespace UE4localizationsTool
                 catch (Exception EX)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.SetCursorPosition(ConsoleText.Length, Console.CursorTop - 1);
-                    Console.WriteLine("Fail");
+                    Console.Write("失败\n");
                     Console.ForegroundColor = ConsoleColor.White;
 
                     Console.ForegroundColor = ConsoleColor.Yellow;
@@ -258,8 +272,7 @@ namespace UE4localizationsTool
 
                 }
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.SetCursorPosition(ConsoleText.Length, Console.CursorTop - 1);
-                Console.WriteLine("Done");
+                Console.Write("完成\n");
                 Console.ForegroundColor = ConsoleColor.White;
             }
         }
@@ -390,8 +403,8 @@ namespace UE4localizationsTool
                 FilePath = FolderPath + @"\" + FilePath;
                 FilePath = FilePath.Replace(@"\\", @"\");
                 Console.ForegroundColor = ConsoleColor.Blue;
-                string ConsoleText = $"[{PathIndex + 1}:{Indexs.Length}] Importing... '{Path.GetFileName(FilePath)}' ";
-                Console.WriteLine(ConsoleText);
+                string ConsoleText = $"[{PathIndex + 1}:{Indexs.Length}] 正在导入... '{Path.GetFileName(FilePath)}' ";
+                Console.Write(ConsoleText);
                 Console.ForegroundColor = ConsoleColor.White;
                 string[] StringArrayValues = new string[ArraySize];
                 Array.Copy(Values, Indexs[PathIndex] + 1, StringArrayValues, 0, ArraySize);
@@ -406,8 +419,7 @@ namespace UE4localizationsTool
                 catch (Exception EX)
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
-                    Console.SetCursorPosition(ConsoleText.Length, Console.CursorTop - 1);
-                    Console.WriteLine("Fail");
+                    Console.Write("失败\n");
                     Console.ForegroundColor = ConsoleColor.White;
 
                     Console.ForegroundColor = ConsoleColor.Yellow;
@@ -416,8 +428,7 @@ namespace UE4localizationsTool
                     continue;
                 }
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.SetCursorPosition(ConsoleText.Length, Console.CursorTop - 1);
-                Console.WriteLine("Done");
+                Console.Write("完成\n");
                 Console.ForegroundColor = ConsoleColor.White;
             }
 

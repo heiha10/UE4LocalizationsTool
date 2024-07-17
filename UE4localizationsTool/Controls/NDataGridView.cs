@@ -213,13 +213,13 @@ public class NDataGridView : DataGridView
     private void InitializeContextMenu()
     {
         contextMenuStrip = new ContextMenuStrip();
-        ToolStripMenuItem copyMenuItem = new ToolStripMenuItem("Copy");
+        ToolStripMenuItem copyMenuItem = new ToolStripMenuItem("复制");
         copyMenuItem.ShortcutKeyDisplayString = "Ctrl+C";
         copyMenuItem.Click += CopyMenuItem_Click;
         contextMenuStrip.Items.Add(copyMenuItem);
 
 
-        ToolStripMenuItem pasteMenuItem = new ToolStripMenuItem("Paste");
+        ToolStripMenuItem pasteMenuItem = new ToolStripMenuItem("粘贴");
         pasteMenuItem.ShortcutKeyDisplayString = "Ctrl+V";
         pasteMenuItem.Click += PasteMenuItem_Click;
         contextMenuStrip.Items.Add(pasteMenuItem);
@@ -321,7 +321,7 @@ public class NDataGridView : DataGridView
     {
         if (SelectedCells.Count == 0 || CurrentCell == null)
         {
-            MessageBox.Show("No cell is selected for copying.", "Copy Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("未选择要复制的单元格。", "复制失败", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
 
@@ -333,7 +333,7 @@ public class NDataGridView : DataGridView
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Copy operation failed: {ex.Message}", "Copy Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"复制操作失败： {ex.Message}", "复制失败", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
@@ -343,7 +343,7 @@ public class NDataGridView : DataGridView
         var str = Clipboard.GetText();
         if (string.IsNullOrEmpty(str))
         {
-            MessageBox.Show("The clipboard is empty. Nothing to paste.", "Paste Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("剪贴板为空。无可粘贴项。", "粘贴失败", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
 
@@ -355,19 +355,19 @@ public class NDataGridView : DataGridView
 
         if (SelectedCells.Count == 0)
         {
-            MessageBox.Show("Please select a single cell to paste into.", "Paste Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("请选择单个单元格进行粘贴。","粘贴失败", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
 
         if (SelectedCells.Count > 1)
         {
-            MessageBox.Show("Cannot paste into a multi-select range. Please select a single cell.", "Paste Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("无法粘贴到多选范围。请选择单个单元格。","粘贴失败", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
 
         if (CurrentCell.ReadOnly)
         {
-            MessageBox.Show("This cell is read-only. Paste failed.", "Paste Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageBox.Show("单元格只读，粘贴失败。","粘贴失败", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             return;
         }
         string[] lines = str.Split(new[] { "\r\n", "\n", "\r" }, StringSplitOptions.None);

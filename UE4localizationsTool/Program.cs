@@ -12,29 +12,38 @@ namespace UE4localizationsTool
 
 
         public static string commandlines =
-         $"{AppDomain.CurrentDomain.FriendlyName}  export     <(Locres/Uasset) FilePath>  <Options>\n" +
-         $"{AppDomain.CurrentDomain.FriendlyName}  import     <(txt) FilePath>  <Options>\n" +
-         $"{AppDomain.CurrentDomain.FriendlyName} -import     <(txt) FilePath>  <Options>\n" +
-         $"{AppDomain.CurrentDomain.FriendlyName}  exportall  <Folder> <TxtFile> <Options>\n" +
-         $"{AppDomain.CurrentDomain.FriendlyName}  importall  <Folder> <TxtFile>  <Options>\n" +
-         $"{AppDomain.CurrentDomain.FriendlyName} -importall  <Folder> <TxtFile>  <Options>\n\n" +
-          "- for import without rename file be careful with this command.\n\n" +
+         $"{AppDomain.CurrentDomain.FriendlyName}  export     <（Locres/Uasset/Umap）文件路径>  <Options>\n" +
+         $"{AppDomain.CurrentDomain.FriendlyName}  import     <(txt/csv) 文件路径>  <Options>\n" +
+         $"{AppDomain.CurrentDomain.FriendlyName} -import     <(txt/csv) 文件路径>  <Options>\n" +
+         $"{AppDomain.CurrentDomain.FriendlyName}  exportall  <文件夹> <文本（txt/csv）> <Options>\n" +
+         $"{AppDomain.CurrentDomain.FriendlyName}  importall  <文件夹> <文本（txt/csv）>  <Options>\n\n" +
+         "【↓↓↓↓↓↓ - 导入原文件，文件保持原名，直接修改原文件。 -↓↓↓↓↓↓】\n\n" +
+         $"{AppDomain.CurrentDomain.FriendlyName} -importall  <文件夹> <文本（txt/csv）>  <Options>\n\n" +
+         "【↑↑↑↑↑↑- 对于不重命名文件的导入，请谨慎使用此命令 -↑↑↑↑↑↑】\n\n" +
 
           "Options:\n" +
-          "To use last filter you applied before in GUI, add (-f \\ -filter) after command line\n" +
-          "filter will apply only in name table (Remember to apply the same filter when importing)\n\n" +
+          "在GUI中使用你之前应用的最后一个过滤器, 在命令后添加 (-f \\ -filter) \n" +
+          "筛选仅适用于名称表 " +
+            "\n(导入时请记住应用相同的筛选)\n\n" +
 
           "导出不包含名称的文件，请使用 (-nn \\ -NoName)" +
           "\n(导入时请记住使用此命令)\n\n" +
 
-          "Examples:\n" +
+           "导出 CSV 格式文件，请使用 (-c \\ -csv)" +
+          "\n(导入时请记住使用此命令)\n\n" +
+
+          "使用方法2 (-m2 \\ -method2)" +
+          "\n(导入时请记住使用此命令)\n\n" +
+
+          "例:\n" +
          $"{AppDomain.CurrentDomain.FriendlyName} export Actions.uasset\n" +
          $"{AppDomain.CurrentDomain.FriendlyName} import Actions.uasset.txt\n" +
          $"{AppDomain.CurrentDomain.FriendlyName} exportall Actions text.txt\n" +
          $"{AppDomain.CurrentDomain.FriendlyName} importall Actions text.txt\n" +
          $"{AppDomain.CurrentDomain.FriendlyName} export Actions.uasset -c （导出CSV格式，最好用于loces导出设置）\n";
 
-        public static (bool UseFilter, bool NoName) GetArgs(int Index, string[] args)
+
+        public static Args GetArgs(int Index, string[] args)
         {
             Args args1 = new Args();
 
@@ -48,7 +57,7 @@ namespace UE4localizationsTool
                         break;
                     case "-nn":
                     case "-noname":
-                        noname = true;
+                        args1 |= Args.noname;
                         break;
                     case "-m2":
                     case "-method2":
@@ -80,7 +89,11 @@ namespace UE4localizationsTool
                     case "-filter":
                     case "-nn":
                     case "-noname":
-                        throw new Exception("Invalid number of arguments.\n\n" + commandlines);
+                    case "-method2":
+                    case "-m2":
+                    case "-c":
+                    case "-csv":
+                        throw new Exception("无效参数。\n\n" + commandlines);
                 }
             }
         }

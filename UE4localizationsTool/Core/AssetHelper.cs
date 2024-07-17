@@ -335,7 +335,7 @@ namespace AssetParser
             memoryList.Skip(4);
             if (!Modify)
             {
-                uexp.Strings.Add(new List<string>() { PropertyName, uexp.UassetData.GetPropertyName(NameIndex), !uexp.UassetData.IOFile ? "be careful with this value." : "Can't edit this value.", !uexp.UassetData.IOFile ? "#FFBFB2" : "#FF0000", "#000000" });
+                uexp.Strings.Add(new List<string>() { PropertyName, uexp.UassetData.GetPropertyName(NameIndex), !uexp.UassetData.IOFile ? "编辑此 Value 要谨慎" : "无法编辑此 value.", !uexp.UassetData.IOFile ? "#FFBFB2" : "#FF0000", "#000000" });
             }
             else
             {
@@ -413,7 +413,7 @@ namespace AssetParser
                     break;
 
                 default:
-                    throw new Exception("UnKnown 'TextProperty' type: " + texthistorytype.ToString());
+                    throw new Exception("未知的 'TextProperty'类型： " + texthistorytype.ToString());
             }
         }
 
@@ -438,7 +438,7 @@ namespace AssetParser
                     memoryList.Skip(1);
                     break;
                 default:
-                    throw new Exception("Unkown argument type: " + Type.ToString());
+                    throw new Exception("未知的参数类型： " + Type.ToString());
             }
         }
     }
