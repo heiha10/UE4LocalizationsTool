@@ -1,67 +1,68 @@
-# UE4LocalizationsTool
-simple tool to edit unreal engine 4 text files.
+# UE4LocalizationsTool 中文版 
+一个简单 UE4 （unreal engine 4） 文本文件的工具。
 
-By: Amr Shaheen
+开发者： Amr Shaheen
+链接：https://github.com/amrshaheen61/UE4LocalizationsTool/tree/master
 <hr>
 
-## Command Lines
-### for export single file use:
+## 命令代码
+### 单个文件导出:
 ```
-UE4localizationsTool.exe  export <(Locres/Uasset/Umap) FilePath>  <Options>
-Example:
+UE4localizationsTool.exe  export <(Locres/Uasset/Umap) 文件路径>  <Options>
+例:
 UE4localizationsTool.exe export Actions.uasset
 ```
-### for import single file use:
+### 单个文件导入:
 ```
-UE4localizationsTool.exe  import <(txt) FilePath>  <Options>
-Example:
+UE4localizationsTool.exe  import <(txt) 文件路径>  <Options>
+例:
 UE4localizationsTool.exe import Actions.uasset.txt
 ```
-### for import single file without rename it use:
+### 单个文件导入不生成重命名的新文件:
 ```
 UE4localizationsTool.exe  -import <(txt) FilePath>  <Options>
 Example:
 UE4localizationsTool.exe -import Actions.uasset.txt
 ```
 
-### for export many files from folder use:
+### 从文件夹导出文件:
 ```
-UE4localizationsTool.exe  exportall  <Folder> <TxtFile> <Options>
-Example:
+UE4localizationsTool.exe  exportall  <文件夹路径> <导出文本路径和名称> <Options>
+例:
 UE4localizationsTool.exe exportall Actions text.txt
 ```
-### for import many files in folder use:
+### 文件夹导入:
 ```
-UE4localizationsTool.exe  importall  <Folder> <TxtFile>  <Options>
-Example:
+UE4localizationsTool.exe  importall  <文件夹路径> <导出文本路径和名称>  <Options>
+例:
 UE4localizationsTool.exe importall Actions text.txt
 ```
-### for import many files in folder without rename files use:
+### 文件夹导入不生成重命名的新文件:
 ```
 UE4localizationsTool.exe  -importall  <Folder> <TxtFile>  <Options>
-Example:
+例:
 UE4localizationsTool.exe -importall Actions text.txt
 ```
 
-### Options: (Remember to apply the same OPTIONS when importing)
+### Options: (导入时一定要和导出时的 options 设置一模一样)
 
-#### To use last filter you applied before in GUI use: (apply only in name table)
+#### UI设置筛选，添加筛选项，重新打开工具或者在生成的 FilterValues.txt 添加修改，一行一项: (仅适用于 name 列的筛选)
 ```
 -f or -filter 
-Example:
+例:
 UE4localizationsTool.exe export Actions.uasset -filter
 ```
 
-#### To export file without including name table use:
+#### 不包含 name 列的导出:
 ```
 -nn or -NoName
-Example:
+例:
 UE4localizationsTool.exe export Actions.uasset -NoName
 ```
-#### To use method 2 use:(trying to catch text without using ue4 asset structure (for uasset and umap only))
+####  method 2 使用:(尝试在不使用ue4资产结构的情况下捕获文本（仅适用于uasset和umap）)
 ```
 -m2 or -method2
-Examplemethod2
+例：
 UE4localizationsTool.exe export Actions.uasset -method2
 UE4localizationsTool.exe export Actions.uasset -method2 -NoName -filter
 ```
